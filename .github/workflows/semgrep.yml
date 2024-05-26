@@ -8,7 +8,8 @@
 #
 # See https://semgrep.dev/docs
 
-name: Semgrep
+name: Semgrep 
+# This is a name
 
 on:
   push:
