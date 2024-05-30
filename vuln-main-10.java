@@ -6,20 +6,20 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 
 public class App
 {
-
-    static String secret = "secret";
-
     private static void bad1() {
         try {
             // ruleid: java-jwt-hardcoded-secret
-            Algorithm algorithm = Algorithm.HMAC256("secret");
+            String secret = System.getenv("JWT_SECRET");
+            Algorithm algorithm = Algorithm.HMAC256(secret);
             String token = JWT.create()
                 .withIssuer("auth0")
                 .sign(algorithm);
         } catch (JWTCreationException exception){
-            //Invalid Signing configuration / Couldn't convert Claims.
+            // Invalid Signing configuration / Couldn't convert Claims.
         }
     }
+}
+
 
     private static void ok1(String secretKey) {
         try {
